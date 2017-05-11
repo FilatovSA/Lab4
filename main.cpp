@@ -7,6 +7,16 @@ char nibble_to_hex(uint8_t i){
     return symbols[i];
 }
 
+void print_byte( uint8_t byte){
+    uint8_t low = (byte & 0b00001111);
+    uint8_t high = (byte & 0b11110000) >>  4;
+    cout << nibble_to_hex(high) << nibble_to_hex(low);
+}
+
 int main(){
+    uint32_t byte;
+    cin >> byte;
+    print_byte(byte);
+    cout << "\n";
     return 0;
 }
