@@ -13,10 +13,18 @@ void print_byte( uint8_t byte){
     cout << nibble_to_hex(high) << nibble_to_hex(low);
 }
 
+void print_in_hex(const void* data, size_t size){
+    const char* p = reinterpret_cast<const char*>(data);
+    for(size_t i = 0; i < size; i++ ){
+        print_byte(p[i]);
+        cout << " ";
+    }
+}
+
+
 int main(){
-    uint32_t byte;
-    cin >> byte;
-    print_byte(byte);
-    cout << "\n";
+    int n;
+    cin >> n;
+    print_in_hex(&n, sizeof(n));
     return 0;
 }
