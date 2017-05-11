@@ -52,9 +52,16 @@ int main(){
     s[2].sex = 1;
     s[2].courses = 2;
     s[2].str = &s[1];
+    cout << "Address of array = " << &s;
+    cout << "\nSize of array = " << sizeof(s) << "\n\n";
+
+    cout << "Address 'name' " << &s[0].name;
+
     for(int i = 0; i < 3; i++){
+        cout << "\nAddress of el of array = " << &s[i];
+        cout << "\nSize of el of array = " << sizeof(s[i]) << "\n";
         print_in_hex(&s[i], sizeof(s[i]));
-        cout << "\n\n";
+        cout << "\n";
     }
     return 0;
 }
