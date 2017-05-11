@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -21,10 +22,39 @@ void print_in_hex(const void* data, size_t size){
     }
 }
 
+struct Student{
+    char name[17];
+    int year;
+    float av_score;
+    int sex:1;
+    int courses;
+    Student* str;
+};
+
 
 int main(){
-    int n;
-    cin >> n;
-    print_in_hex(&n, sizeof(n));
+    Student s[3];
+    strcpy(s[0].name, "Ivan");
+    s[0].year = 2016;
+    s[0].av_score = 4.3;
+    s[0].sex = 1;
+    s[0].courses = 2;
+    s[0].str = &s[1];
+    strcpy(s[1].name, "Artem");
+    s[1].year = 2016;
+    s[1].av_score = 5;
+    s[1].sex = 1;
+    s[1].courses = 2;
+    s[1].str = nullptr;
+    strcpy(s[2].name, "Nikolai");
+    s[2].year = 2016;
+    s[2].av_score = 3.9;
+    s[2].sex = 1;
+    s[2].courses = 2;
+    s[2].str = &s[1];
+    for(int i = 0; i < 3; i++){
+        print_in_hex(&s[i], sizeof(s[i]));
+        cout << "\n\n";
+    }
     return 0;
 }
